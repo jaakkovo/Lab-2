@@ -11,8 +11,9 @@
 #include "board.h"
 #include "FreeRTOS.h"
 #include "task.h"
-#include <mutex>
 #include "semphr.h"
+#include <stdio.h>
+#include <string.h>
 
 
 #if defined (__USE_LPCOPEN)
@@ -28,6 +29,11 @@
 // TODO: insert other include files here
 SemaphoreHandle_t xMutex = xSemaphoreCreateMutex();
 SemaphoreHandle_t xBool = xSemaphoreCreateCounting(2, 1);
+SemaphoreHandle_t xBool2 = xSemaphoreCreateCounting(2, 1);
+char word[61];
+char empty[61];
+int indexi = 0;
+char question[] = "?";
 
 /* Sets up system hardware */
 static void prvSetupHardware(void)
@@ -83,7 +89,7 @@ static void task2(void *pvParameters) {
 	}
 }
 
-/* UART (or output) thread */
+
 static void readChars(void *pvParameters) {
 	int character;
 	char buf[256];
@@ -113,6 +119,62 @@ static void receivedChars(void *pvParameters) {
 	}
 }
 
+/* UART (or output) thread */
+static void readChars2(void *pvParameters) {
+	int character;
+	char buf[1];
+	int isThere = 0;
+
+	while (1) {
+		character = Board_UARTGetChar();
+		isThere = 0;
+		if (character != -1){
+
+			sprintf(buf, "%c", character);
+
+			if (character != 10 && character != 13 && indexi < 60){
+				Board_UARTPutSTR (buf);
+				word[indexi] = buf[0];
+				indexi++;
+			}else{
+				indexi = 0;
+				Board_UARTPutSTR ("\r\n");
+				Board_UARTPutSTR ("[You] ");
+				Board_UARTPutSTR (word);
+				Board_UARTPutSTR ("\r\n");
+
+				for (int i = 0; i<61; i++){
+					if (word[i] == '?'){
+						isThere = 1;
+					}
+				}
+
+				if(isThere == 1){
+					xSemaphoreTake(xBool2, portMAX_DELAY);
+					isThere = 0;
+				}
+
+				memset (word, 0, sizeof word);
+
+			}
+		}
+	}
+	vTaskDelay(configTICK_RATE_HZ / 12);
+}
+
+/* UART (or output) thread */
+static void receivedChars2(void *pvParameters) {
+	while (1) {
+		if (uxSemaphoreGetCount(xBool2) == 0)
+		{
+			Board_UARTPutSTR ("[Oracle] Hmmm...");
+			vTaskDelay(configTICK_RATE_HZ * 3);
+
+			xSemaphoreGive(xBool2);
+		}
+	}
+}
+
 int main(void) {
 
 #if defined (__USE_LPCOPEN)
@@ -135,26 +197,42 @@ int main(void) {
 	Chip_IOCON_PinMuxSet(LPC_IOCON, 1, 9, IOCON_DIGMODE_EN);
 	Chip_GPIO_SetPinDIRInput(LPC_GPIO, 1, 9);
 
+	/* EXERCISE 1 */
 
-	/* LED1 toggle thread */
-	xTaskCreate(task1, "task1",
-			configMINIMAL_STACK_SIZE, NULL, (tskIDLE_PRIORITY + 1UL),
-			(TaskHandle_t *) NULL);
+	//	/* LED1 toggle thread */
+	//	xTaskCreate(task1, "task1",
+	//			configMINIMAL_STACK_SIZE, NULL, (tskIDLE_PRIORITY + 1UL),
+	//			(TaskHandle_t *) NULL);
+	//
+	//	/* LED2 toggle thread */
+	//	xTaskCreate(task2, "task2",
+	//			configMINIMAL_STACK_SIZE, NULL, (tskIDLE_PRIORITY + 1UL),
+	//			(TaskHandle_t *) NULL);
 
-	/* LED2 toggle thread */
-	xTaskCreate(task2, "task2",
-			configMINIMAL_STACK_SIZE, NULL, (tskIDLE_PRIORITY + 1UL),
-			(TaskHandle_t *) NULL);
+	/* EXERCISE 2 */
 
-	/* UART output thread, simply counts seconds */
-	xTaskCreate(readChars, "readChars",
-			configMINIMAL_STACK_SIZE, NULL, (tskIDLE_PRIORITY + 1UL),
-			(TaskHandle_t *) NULL);
+	//	/* UART output thread, simply counts seconds */
+	//	xTaskCreate(readChars, "readChars",
+	//			configMINIMAL_STACK_SIZE, NULL, (tskIDLE_PRIORITY + 1UL),
+	//			(TaskHandle_t *) NULL);
+	//
+	//	/* UART output thread, simply counts seconds */
+	//	xTaskCreate(receivedChars, "receivedChars",
+	//			configMINIMAL_STACK_SIZE, NULL, (tskIDLE_PRIORITY + 1UL),
+	//			(TaskHandle_t *) NULL);
 
-	/* UART output thread, simply counts seconds */
-	xTaskCreate(receivedChars, "receivedChars",
-			configMINIMAL_STACK_SIZE, NULL, (tskIDLE_PRIORITY + 1UL),
-			(TaskHandle_t *) NULL);
+	/* EXERCISE 2 */
+
+		/* UART output thread, simply counts seconds */
+		xTaskCreate(readChars2, "readChars2",
+				configMINIMAL_STACK_SIZE, NULL, (tskIDLE_PRIORITY + 1UL),
+				(TaskHandle_t *) NULL);
+
+//		/* UART output thread, simply counts seconds */
+//		xTaskCreate(receivedChars2, "receivedChars2",
+//				configMINIMAL_STACK_SIZE, NULL, (tskIDLE_PRIORITY + 1UL),
+//				(TaskHandle_t *) NULL);
+
 
 	/* Start the scheduler */
 	vTaskStartScheduler();

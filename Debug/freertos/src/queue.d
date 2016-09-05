@@ -1,6 +1,6 @@
 freertos/src/queue.o freertos/src/queue.d: ../freertos/src/queue.c \
- C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/FreeRTOS.h \
- C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/FreeRTOSConfig.h \
+ C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/FreeRTOS.h \
+ C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/FreeRTOSConfig.h \
  C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\lpc_board_nxp_lpcxpresso_1549\inc/board.h \
  C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\lpc_chip_15xx\inc/chip.h \
  C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\lpc_chip_15xx\inc/lpc_types.h \
@@ -51,18 +51,18 @@ freertos/src/queue.o freertos/src/queue.d: ../freertos/src/queue.c \
  C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\lpc_chip_15xx\inc/i2cs_15xx.h \
  C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\lpc_board_nxp_lpcxpresso_1549\inc/board_api.h \
  C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\lpc_chip_15xx\inc/lpc_types.h \
- C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/projdefs.h \
- C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/portable.h \
- C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/deprecated_definitions.h \
- C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/portmacro.h \
- C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/mpu_wrappers.h \
- C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/task.h \
- C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/list.h \
- C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/queue.h
+ C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/projdefs.h \
+ C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/portable.h \
+ C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/deprecated_definitions.h \
+ C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/portmacro.h \
+ C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/mpu_wrappers.h \
+ C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/task.h \
+ C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/list.h \
+ C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/queue.h
 
-C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/FreeRTOS.h:
+C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/FreeRTOS.h:
 
-C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/FreeRTOSConfig.h:
+C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/FreeRTOSConfig.h:
 
 C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\lpc_board_nxp_lpcxpresso_1549\inc/board.h:
 
@@ -164,18 +164,18 @@ C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\lpc_board_nxp_lpcxpress
 
 C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\lpc_chip_15xx\inc/lpc_types.h:
 
-C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/projdefs.h:
+C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/projdefs.h:
 
-C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/portable.h:
+C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/portable.h:
 
-C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/deprecated_definitions.h:
+C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/deprecated_definitions.h:
 
-C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/portmacro.h:
+C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/portmacro.h:
 
-C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/mpu_wrappers.h:
+C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/mpu_wrappers.h:
 
-C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/task.h:
+C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/task.h:
 
-C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/list.h:
+C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/list.h:
 
-C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab2\freertos\inc/queue.h:
+C:\Users\Jaakko\Documents\LPCXpresso_8.2.0_647\workspace\Lab-2\freertos\inc/queue.h:
